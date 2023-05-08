@@ -3,9 +3,20 @@
 
 class Account {
     
-    private string $cpfHolder;
-    private string $nameHolder;
-    private  float $balance = 0;
+    private Holder $holder;
+    private  float $balance;
+    private static int $numberOfAccounts = 0;
+
+
+    public function __construct(Holder $holder)
+    {
+        $this->holder = $holder;
+        $this->balance = 0;
+
+        Account::$numberOfAccounts++;
+    }
+
+
 
     public function withdraw(float $valueToWithdraw): void
     {
@@ -42,26 +53,26 @@ class Account {
         return $this->balance;
     }
 
-    public function getName():string
+    public function getNameHolder():string
     {
-        return $this->nameHolder;
+        return $this->holder->getName();
     }
 
-    public function setName(string $name)
+    public function getCpfHolder():string
     {
-        return $this->nameHolder = $name;
+        return $this->holder->getCpf();
+    }
+
+
+    public static function getNumberOfAccounts():int
+    {
+        return Conta::$numberOfAccounts;
+    }
+
+    public function __destruct()
+    {
+        self::$numberOfAccounts--;
     }
     
-    public function getCpf():string
-    {
-        return $this->cpfHolder;
-    }
-    
-    public function setCpf(string $cpf)
-    {
-        return $this->cpfHolder = $cpf;
-    }
-
-
 }
 

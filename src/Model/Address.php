@@ -1,11 +1,13 @@
 <?php
 
+namespace Alura\Bank\Model;
+
 class Address {
 
-    private string $city;
-    private string $neighborhood;
-    private string $street;
-    private string $number;
+    protected string $city;
+    protected string $neighborhood;
+    protected string $street;
+    protected string $number;
 
     public function __construct(string $city, string $neighborhood, string $street, string $number)
     {

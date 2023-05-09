@@ -1,10 +1,15 @@
 <?php
 
+namespace Alura\Bank\Model\Account;
 
-class Account {
+
+use Alura\Bank\Model\Account\Holder;
+
+
+    abstract class Account {
     
     private Holder $holder;
-    private  float $balance;
+    protected  float $balance;
     private static int $numberOfAccounts = 0;
 
 
@@ -20,6 +25,8 @@ class Account {
 
     public function withdraw(float $valueToWithdraw): void
     {
+        $fee = $valueToWithdraw * $this->percentageFee();
+        $valueToWithdraw = $valueToWithdraw + $fee;
         if($valueToWithdraw > $this-> balance){
             echo "Saldo indiponivel";
             return;
@@ -37,16 +44,6 @@ class Account {
         
     }
     
-    public function transfer(float $valueToTransfer, Account $accountDestiny):void
-    {
-        if($valueToTransfer > $this->balance){
-            echo 'erro';
-            return;
-        }
-            $this->withdraw($valueToTransfer);
-            $accountDestiny->deposit($valueToTransfer);
-    }
-
 
     public function getBalance():float
     {
@@ -74,5 +71,8 @@ class Account {
         self::$numberOfAccounts--;
     }
     
+
+    abstract protected function percentageFee(): float;
+
 }
 

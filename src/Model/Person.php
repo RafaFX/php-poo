@@ -24,12 +24,11 @@ class Person {
         return $this->cpf->getCpfNumber();
     }
 
-    protected function validateNameHolder(string $nameHolder)
+    public function validateNameHolder() :bool
     {
-        if(strlen($nameHolder) < 5){
-            echo "erro no nome";
-            exit();
+        if(strlen($this->name) < 5){
+            return false;
         }
+        return true;
     }
-
 }

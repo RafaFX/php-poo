@@ -1,7 +1,7 @@
 <?php
 
 namespace Alura\Bank\Service;
-use Alura\Bank\Model\Employee;
+use Alura\Bank\Model\Employees\Employee;
 
 class ControlOfBonus {
 

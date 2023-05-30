@@ -4,10 +4,11 @@ namespace Alura\Bank\Model\Account;
 
 
 use Alura\Bank\Model\Address;
+use Alura\Bank\Model\Authenticable;
 use Alura\Bank\Model\Cpf;
 use Alura\Bank\Model\Person;
 
-class Holder extends Person
+class Holder extends Person implements Authenticable
 {
     protected Address $address;
 
@@ -31,6 +32,11 @@ class Holder extends Person
     public function getAdress(): Address
     {
         return $this->address;
+    }
+
+    public function canAuthenticate(string $password): bool
+    {
+        return $password === 'abcd';
     }
 
 }

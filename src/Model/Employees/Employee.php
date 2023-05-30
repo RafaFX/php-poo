@@ -3,32 +3,33 @@
 namespace Alura\Bank\Model\Employees;
 use Alura\Bank\Model\Cpf;
 use Alura\Bank\Model\Person;
-class Employee extends Person {
+abstract class Employee extends Person {
 
     private string $role;
     private  float $wage;
 
-    public function __construct(Cpf $cpf , string $name, string $role, float $wage)
+    public function __construct(Cpf $cpf , string $name, float $wage)
     {
         parent::__construct($cpf,$name);
-        $this->role = $role;
         $this->wage = $wage;
     }
 
-    public function getRole(): string
-    {
-        return $this->role;
-    }
 
+    public function getRaise(float $valueRaise)
+    {
+        if ($valueRaise < 0){
+            echo "Valor invalido";
+            return;
+        }
+        $this->wage += $valueRaise;
+    }
 
     public function getWage(): float
     {
         return $this->wage;
     }
 
-    public function calculateBonus(): float
-    {
-        return $this->wage * 0.1;
-    }
+    abstract public function calculateBonus(): float;
+
 
 }

@@ -37,5 +37,10 @@ class Address {
         return $this->number;
     }
 
+    public function __toString():string
+    {
+        return "{$this->street}, {$this->number}, {$this->neighborhood}, {$this->city}";
+    }
+
 
 }

@@ -9,5 +9,4 @@ class SavingsAccount extends Account {
     {
         return 0.03;
     }
-
 }

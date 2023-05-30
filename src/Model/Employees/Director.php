@@ -3,17 +3,17 @@
 namespace Alura\Bank\Model\Employees;
 use Alura\Bank\Model\Authenticable;
 
-class Manager extends Employee implements Authenticable {
+class Director extends Employee implements Authenticable {
 
 
     public function calculateBonus(): float
     {
-        return $this->getWage();
+        return $this->getWage() * 2;
     }
-
 
     public function canAuthenticate(string $password): bool
     {
-        return $password === '4321';
+        return $password === '1234';
     }
+
 }

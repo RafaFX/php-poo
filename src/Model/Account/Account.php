@@ -6,7 +6,7 @@ namespace Alura\Bank\Model\Account;
 use Alura\Bank\Model\Account\Holder;
 
 
-    abstract class Account {
+abstract class Account {
     
     private Holder $holder;
     protected  float $balance;
@@ -17,11 +17,8 @@ use Alura\Bank\Model\Account\Holder;
     {
         $this->holder = $holder;
         $this->balance = 0;
-
         Account::$numberOfAccounts++;
     }
-
-
 
     public function withdraw(float $valueToWithdraw): void
     {

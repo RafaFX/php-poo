@@ -1,16 +1,17 @@
 <?php
 
 use Alura\Bank\Service\ControlOfBonus;
-use Alura\Bank\Model\{Employee, Cpf};
+use Alura\Bank\Model\{Cpf};
+use Alura\Bank\Model\Employees\{Employee, Manager, Director, VideoEditor};
 
-require_once 'src/Model/Person.php';
-require_once 'src/Model/Employee.php';
-require_once 'src/Model/Cpf.php';
-require_once 'src/Model/Service/ControlOfBonus.php';
 
-$umFuncionario = new Employee(new Cpf('123.456.789-10'),'Vinicius Dias','Desenvolvedor','1000');
+require_once 'autoload.php';
 
-$umaFuncionaria = new Employee(new Cpf('123.566.189-12'),'Patricia Dias','Desenvolvedora','1500');
+$umFuncionario = new Manager(new Cpf('123.456.789-10'),'Vinicius Dias','1000');
+
+$umaFuncionaria = new Director(new Cpf('123.566.189-12'),'Patricia Dias','1500');
+
+$umEditor = new VideoEditor(new Cpf('123.536.129-12'),'Ronaldo','1000');
 
 
 $controlador = new ControlOfBonus();
